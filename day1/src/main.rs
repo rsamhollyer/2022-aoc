@@ -1,7 +1,8 @@
 fn main() -> color_eyre::Result<()> {
     color_eyre::install()?;
+    let mut max = 0;
 
-    for group in include_str!("./input.txt")
+    for group in include_str!("./problem.txt")
         .replace("\r\n", "\n")
         .split("\n\n")
     {
@@ -14,8 +15,10 @@ fn main() -> color_eyre::Result<()> {
             println!(" - {value}");
             sum += value;
         }
+        max = max.max(sum);
         println!("Sum: {sum}");
     }
 
+    println!("Max: {max}");
     Ok(())
 }
